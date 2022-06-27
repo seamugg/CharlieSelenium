@@ -3,33 +3,39 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 
-
-
 public class TC_1 {
 
-    private WebElement btn_search;
+    private static WebElement btn_search;
 
     {
 
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         getdriver();
+        SetSearchTextBox("Stainless Steel Table");
+        ClickSearchButton();
+        last_page();
+        AddtoCart();
+
+
 
 
     }
 
-    public static void getdriver() {
-
+    public static void getdriver() throws InterruptedException {
+        System.setProperty("webdriver.chrome.driver",
+                "C:\\Users\\seamu\\eclipse-workspace\\workspace\\CharlieSelenium\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
-        System.setProperty("webdriver.chrome.driver", "C:/chromedriver.exe");
+
         driver.get("https://www.webstaurantstore.com/search/stainless-steel-table");
+
 
 
     }
 
     @SuppressWarnings("null")
-    public void SetSearchTextBox(String arg) {
+    public static void SetSearchTextBox(String arg) {
 
 
         WebElement txtbox_search = null;
@@ -49,18 +55,18 @@ public class TC_1 {
        // Reporter.log(" Able to search for product " + arg, true);
     }
 
-    public void ClickSearchButton() {
+    public static void ClickSearchButton() {
         btn_search.click();
         //Reporter.log(" Search box button clicked", true);
     }
 
-    public void last_page() {
+    public static void last_page() {
         WebElement.class.equals("rc-pagination-next rc-pagination-disabled");
         WebElement Button_pg9 = null;
         Button_pg9.click();
     }
 
-    public void AddtoCart() {
+    public static void AddtoCart() {
         WebElement.class.equals("btn btn-cart btn-small");
         WebElement submit = null;
         submit.click();
